@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from scipy.interpolate import make_interp_spline
 
 class BasicTask:
     def __init__(self, name, duration, difficulty):
@@ -134,7 +135,7 @@ def plot_simulation(history, tasks, attention_curve, meditation_points, min_atte
         task_history = [(time, duration) for time, task_id, duration in zip(times, task_ids, durations) if task_id == task.task_id]
         for start_time, duration in task_history:
             plt.plot([start_time, start_time + duration], [task.task_id, task.task_id], color=color, lw=2)
-    
+
     task_names = [task.name for task in tasks]
     plt.xlabel('Global Clock (minutes)')
     plt.ylabel('Task')
@@ -203,7 +204,7 @@ def explain_attention_curve(attention_task_ids, task_names, fatigue_factors, con
             task_name = "No task"
         else:
             task_name = task_names[task_id]
-        
+
         if task_name != previous_task:
             print(f"Time: {continuous_times[idx]} minutes - Attention shifted to: {task_name}")
             print(f"Fatigue Factor: {fatigue_factors[idx]}")
@@ -288,7 +289,7 @@ def choose_template():
     print("16. Intensive Care Unit Management")
     #print("17. Custom Template")
     choice = int(input("Enter the number of your choice: "))
-    
+
     if choice == 1:
         return office_work_template()
     elif choice == 2:
@@ -517,17 +518,17 @@ def plot_meditation_efficiency(meditation_duration, meditation_effectiveness, at
     if not attention_curve:
         print("No attention curve data to plot.")
         return
-    
+
     # Simulating an improvement in attention recovery over time with consideration of fatigue and task difficulty
     meditation_times = np.arange(0, meditation_duration + 1, 1)
     attention_recovered = []
-    
+
     for t in meditation_times:
         fatigue_factor = np.interp(t, [0, meditation_duration], [attention_curve[0][2], attention_curve[-1][2]])
         task_difficulty_factor = np.mean([entry[2] for entry in attention_curve])
         recovered = meditation_effectiveness * t * (1 / (1 + fatigue_factor * task_difficulty_factor))
         attention_recovered.append(recovered)
-    
+
     plt.figure(figsize=(12, 6))
     plt.plot(meditation_times, attention_recovered, 'ro-', label='Attention Recovered by Meditation')
     plt.xlabel('Meditation Duration (minutes)')
@@ -552,6 +553,9 @@ plot_simulation(history, tasks, attention_curve, meditation_points, min_attentio
 # Plot meditation-specific graph
 plot_meditation_efficiency(meditation_duration, meditation_effectiveness, attention_curve)
 
+total_attention_recovered = meditation_duration * meditation_effectiveness
+print(f"\nTotal attention gain from meditation: {total_attention_recovered}")
+
 # Call explain_attention_curve and print the result once
 continuous_times = [entry[0] for entry in attention_curve]
 attention_levels = [entry[3] for entry in attention_curve]
@@ -575,3 +579,4 @@ explain_attention_curve(
 # Call calculate_attention_gain and print the result
 #total_gain, gains = calculate_attention_gain(meditation_points, attention_levels, continuous_times, example_focus_level_function)
 #print(f"\nTotal attention gain from meditation: {total_gain:.2f}")
+
