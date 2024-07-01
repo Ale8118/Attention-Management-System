@@ -12,7 +12,7 @@ The project implements an attention management system that simulates the fluctua
 
 → This program is designed to help you understand and visualize how various tasks and meditation sessions impact your attention levels over time. It begins by asking you to input details about the tasks you need to perform. For each task, you'll specify the name, duration, difficulty, base attention level, criticality, and start time. The program ensures that all inputs are valid, prompting you to re-enter any incorrect values. ✅
 
-→ Next, you’ll input details about your meditation sessions, including their start times, durations, and effectiveness. Again, the program validates these inputs to ensure accuracy. 🧘‍♂️🧘‍♀️
+→ Next, you’ll input details about your meditation sessions, including their start times, durations, and effectiveness. Again, the program validates these inputs to ensure accuracy. ☯️
 
 → Once all the data is entered, you have the opportunity to review and modify any values. The program presents a summary of your inputs and allows you to make changes before proceeding. This ensures that you can refine your schedule to match your real-life scenarios accurately. ✏️🔍
 
