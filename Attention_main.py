@@ -142,8 +142,8 @@ def simulate(tasks, initial_attention, min_attention, max_attention, meditation_
                         total_attention_gain += session.effectiveness
             
             attention_level -= task.difficulty
-            if attention_level < min_attention:
-                attention_level = min_attention
+            #if attention_level < min_attention:
+                #attention_level = min_attention
 
             history.append((current_time, task.task_id, attention_level, task.difficulty))
             attention_curve.append((current_time, task.task_id, task.difficulty, attention_level))
