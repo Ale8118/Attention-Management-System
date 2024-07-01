@@ -24,6 +24,67 @@ The project implements an attention management system that simulates the fluctua
 
 → Finally, you can choose to run the program again, modify the values, or exit. This flexibility allows you to experiment with different schedules and see how various adjustments can improve your attention management. 🔄⚙️🚪
 
+
+### ➡️ New Features:
+
+1. **Gurdjieff's Laws Integration**
+   - **Law of Octaves 🎶**
+     - Every 7th unit of time, attention gets a boost! 🚀
+     - Example: `attention_level += 10` on these intervals.
+   
+   - **Law of Three 🔺**
+     - Every 3rd unit of time, attention gets a minor reduction. 📉
+     - Example: `attention_level -= 5` on these intervals.
+
+2. **Enneagram Type Effects 🌀**
+   - Choose your Enneagram type and see personalized effects! 🌟
+   - Example: Reformers get a slight attention boost. (`attention_level += 5`)
+
+3. **Breathing Practices 🌬️**
+   - Integrate breathing exercises for attention recovery. 🌿
+   - Example: Box breathing, diaphragmatic breathing.
+   - Scheduled at strategic times to optimize attention.
+
+### 📈 Visual Enhancements:
+
+- **Gurdjieff's Laws on Graphs 📊**
+  - **Blue Dashed Lines** for Law of Octaves Intervals. 🔵
+  - **Red Dashed Lines** for Law of Three Intervals. 🔴
+
+- **Attention Level Over Time Chart 📉**
+  - Highlights when meditation 🧘‍♂️ and breathing 🌬️ practices are applied.
+  - Shows boosts and reductions in attention according to Gurdjieff's laws.
+
+### 🛠️ Code Snippets:
+
+#### Simulation Adjustments:
+
+```python
+# Apply Law of Octaves and Law of Three
+if (current_time % 7 == 0):  # Law of Octaves
+    attention_level += 10  # Example boost for octave
+if (current_time % 3 == 0):  # Law of Three
+    attention_level -= 5  # Example reduction for interval
+```
+
+#### Visualization Enhancements:
+
+```python
+# Highlight Law of Octaves and Law of Three intervals
+for time in range(int(max(attention_times))):
+    if time % 7 == 0:
+        plt.axvline(x=time, color='blue', linestyle='--', label='Law of Octaves' if time == 0 else "")
+    if time % 3 == 0:
+        plt.axvline(x=time, color='red', linestyle='--', label='Law of Three' if time == 0 else "")
+```
+
+### 💡 How to Use:
+
+1. **Select Tasks & Meditations 📝**
+2. **Choose Enneagram Type 🌀**
+3. **Run Simulation & View Graph 📈**
+
+
 { Enjoy optimizing your day with this interactive and insightful tool! } 👍
 
 
